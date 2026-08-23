@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>reactor-augmentation dashboard</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --border: #2a2f3a; --text: #e6e8ee;
+    --muted: #8b93a3; --accent: #5eb0ff; --good: #4caf6d; --bad: #e0575c; --warn: #d9a441;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.45 -apple-system, Segoe UI, Roboto, sans-serif; }
+  header { padding: 14px 20px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 16px; position: sticky; top: 0;
+    background: var(--bg); z-index: 5; }
+  header h1 { font-size: 15px; margin: 0; font-weight: 600; }
+  header .sub { color: var(--muted); font-size: 12px; }
+  nav { display: flex; gap: 4px; margin-left: auto; }
+  nav button { background: transparent; border: 1px solid var(--border); color: var(--text);
+    padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  nav button.active { background: var(--accent); border-color: var(--accent); color: #06131f; font-weight: 600; }
+  main { padding: 18px 20px 60px; max-width: 1200px; margin: 0 auto; }
+  section { display: none; }
+  section.active { display: block; }
+  h2 { font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em;
+    margin: 22px 0 8px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; margin-bottom: 14px; }
+  .card-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .card-head b { font-size: 14px; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11px;
+    border: 1px solid var(--border); color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  th { color: var(--muted); font-weight: 500; }
+  td.prompt { white-space: normal; color: var(--muted); max-width: 420px; }
+  .ok { color: var(--good); }
+  .no { color: var(--bad); }
+  .thumb { width: 40px; height: 26px; object-fit: cover; border-radius: 3px; vertical-align: middle;
+    border: 1px solid var(--border); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .grid figure { margin: 0; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden; cursor: pointer; }
+  .grid img { width: 100%; height: 100px; object-fit: cover; display: block; }
+  .grid figcaption { font-size: 11px; padding: 5px 7px; color: var(--muted);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  select { background: var(--panel); color: var(--text); border: 1px solid var(--border);
+    border-radius: 6px; padding: 5px 8px; font-size: 12.5px; }
+  pre.log { background: #0a0c10; border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px; max-height: 65vh; overflow: auto; font-size: 12px; white-space: pre-wrap;
+    word-break: break-word; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+  .dot.on { background: var(--good); box-shadow: 0 0 6px var(--good); }
+  .dot.off { background: var(--muted); }
+  .muted { color: var(--muted); }
+  .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none;
+    align-items: center; justify-content: center; z-index: 20; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 6px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>reactor-augmentation</h1>
+  <span class="sub" id="rootPath">local dashboard · read-only</span>
+  <nav>
+    <button data-tab="datasets" class="active">Datasets</button>
+    <button data-tab="scenes">Scenes</button>
+    <button data-tab="previews">Previews</button>
+    <button data-tab="logs">Build log</button>
+  </nav>
+</header>
+
+<main>
+  <section id="tab-datasets" class="active"><div id="datasets"></div></section>
+  <section id="tab-scenes"><div id="scenes"></div></section>
+  <section id="tab-previews"><div id="previews"></div></section>
+  <section id="tab-logs">
+    <div style="display:flex; align-items:center; gap:10px; margin:10px 0;">
+      <select id="logSelect"></select>
+      <span id="logStatus" class="muted"></span>
+    </div>
+    <pre class="log" id="logBody">loading…</pre>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox"><img id="lightboxImg"></div>
+
+<script>
+const $ = (sel, el=document) => el.querySelector(sel);
+const $$ = (sel, el=document) => [...el.querySelectorAll(sel)];
+const esc = s => (s ?? "").toString().replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+document.querySelectorAll("nav button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("nav button").forEach(x => x.classList.remove("active"));
+  document.querySelectorAll("main section").forEach(x => x.classList.remove("active"));
+  b.classList.add("active");
+  $("#tab-" + b.dataset.tab).classList.add("active");
+}));
+
+$("#lightbox").addEventListener("click", () => $("#lightbox").classList.remove("open"));
+function openLightbox(src) { $("#lightboxImg").src = src; $("#lightbox").classList.add("open"); }
+
+function findPreview(previewIndex, sceneId) {
+  for (const dir of previewIndex) {
+    const hit = dir.images.find(f => f.replace(/\.(png|jpg|jpeg)$/i, "") === sceneId);
+    if (hit) return `/files/${dir.dir}/${hit}`;
+  }
+  return null;
+}
+
+async function renderDatasets() {
+  const [dsResp, prevResp] = await Promise.all([
+    fetch("/api/datasets").then(r => r.json()),
+    fetch("/api/previews").then(r => r.json()),
+  ]);
+  const previewIndex = prevResp.preview_dirs;
+  const el = $("#datasets");
+  if (!dsResp.datasets.length) { el.innerHTML = `<p class="muted">no datasets under datasets/ yet</p>`; return; }
+  el.innerHTML = dsResp.datasets.map(d => {
+    const kept = d.episodes.length;
+    const rows = d.episodes.map(e => {
+      const thumb = findPreview(previewIndex, e.scene_id);
+      const de = e.target_dE_median != null ? `${e.target_dE_median} / ${e.target_dE_p90}` : "–";
+      return `<tr>
+        <td>${e.episode_index}</td>
+        <td>${thumb ? `<img class="thumb" src="${thumb}" onclick="openLightbox('${thumb}')">` : ""} ${esc(e.scene_id)}</td>
+        <td>${esc((e.fruits_added||[]).join(", "))}</td>
+        <td>${e.frames_kept}${e.truncated ? ` <span class="warn" title="truncated from ${e.frames_before_truncation}">✂</span>` : ""}</td>
+        <td>${e.coverage != null ? e.coverage.toFixed(3) : "–"}</td>
+        <td>${de}</td>
+      </tr>`;
+    }).join("");
+    const dropped = (d.dropped || []).map(x => `<span class="pill no" title="${esc(x.why)}">${esc(x.scene)}</span>`).join(" ");
+    return `<div class="card">
+      <div class="card-head">
+        <b>${esc(d.name)}</b>
+        <span class="pill">${kept} episodes</span>
+        <span class="pill">${d.total_frames} frames</span>
+        <span class="pill">${d.fps} fps</span>
+        <span class="muted">${esc(d.path)}</span>
+      </div>
+      <table>
+        <thead><tr><th>ep</th><th>scene</th><th>fruits</th><th>frames</th><th>coverage</th><th>target dE med/p90</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      ${dropped ? `<div style="margin-top:8px;" class="muted">dropped: ${dropped}</div>` : ""}
+    </div>`;
+  }).join("");
+}
+
+async function renderScenes() {
+  const resp = await fetch("/api/scenes").then(r => r.json());
+  const el = $("#scenes");
+  el.innerHTML = resp.scene_files.map(f => {
+    const rows = f.scenes.map(s => `<tr>
+      <td>${esc(s.id)}</td>
+      <td>${esc((s.fruits||[]).join(", "))}</td>
+      <td>${esc(s.style || "")}</td>
+      <td class="prompt">${esc(s.prompt)}</td>
+    </tr>`).join("");
+    return `<div class="card">
+      <div class="card-head"><b>${esc(f.file)}</b><span class="pill">${f.scenes.length} scenes</span></div>
+      <table>
+        <thead><tr><th>id</th><th>fruits</th><th>style</th><th>prompt</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+  }).join("");
+}
+
+async function renderPreviews() {
+  const resp = await fetch("/api/previews").then(r => r.json());
+  const el = $("#previews");
+  el.innerHTML = resp.preview_dirs.map(d => `<div class="card">
+      <div class="card-head"><b>${esc(d.dir)}</b><span class="pill">${d.images.length} images</span></div>
+      <div class="grid">${d.images.map(f => {
+        const src = `/files/${d.dir}/${f}`;
+        return `<figure onclick="openLightbox('${src}')"><img src="${src}" loading="lazy"><figcaption>${esc(f)}</figcaption></figure>`;
+      }).join("")}</div>
+    </div>`).join("");
+}
+
+let logsCache = [];
+async function loadLogList() {
+  const resp = await fetch("/api/logs").then(r => r.json());
+  logsCache = resp.logs;
+  const sel = $("#logSelect");
+  const prev = sel.value;
+  sel.innerHTML = logsCache.map(l => `<option value="${esc(l.name)}">${esc(l.name)}</option>`).join("");
+  if (prev && logsCache.some(l => l.name === prev)) sel.value = prev;
+  renderLog();
+}
+function renderLog() {
+  const l = logsCache.find(x => x.name === $("#logSelect").value);
+  if (!l) { $("#logBody").textContent = "no log selected"; return; }
+  if (!l.exists) { $("#logBody").textContent = `${l.name}: file not found yet`; $("#logStatus").innerHTML = ""; return; }
+  $("#logStatus").innerHTML = `<span class="dot ${l.running ? 'on' : 'off'}"></span>${l.running ? "running" : "idle"} · updated ${new Date(l.mtime).toLocaleTimeString()}`;
+  const body = $("#logBody");
+  const wasAtBottom = body.scrollTop + body.clientHeight >= body.scrollHeight - 20;
+  body.textContent = l.tail || "(empty)";
+  if (wasAtBottom) body.scrollTop = body.scrollHeight;
+}
+$("#logSelect").addEventListener("change", renderLog);
+
+async function refreshAll() {
+  try { await renderDatasets(); } catch (e) { console.error(e); }
+  try { await renderScenes(); } catch (e) { console.error(e); }
+  try { await renderPreviews(); } catch (e) { console.error(e); }
+  try { await loadLogList(); } catch (e) { console.error(e); }
+}
+refreshAll();
+setInterval(refreshAll, 4000);
+</script>
+</body>
+</html>

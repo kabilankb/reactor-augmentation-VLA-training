@@ -1,0 +1,14 @@
+[
+  [
+    "S1-additive-style",
+    "a red apple on the wooden table beside the oranges, everything else unchanged"
+  ],
+  [
+    "S2-no-color-word",
+    "the three small round fruits on the table are ripe red apples, everything else unchanged"
+  ],
+  [
+    "S3-citrus-noun",
+    "replace the small round citrus fruits on the table with red apples of the same size in the same positions, the robot arm and the plate unchanged"
+  ]
+]

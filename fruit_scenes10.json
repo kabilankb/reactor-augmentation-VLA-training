@@ -1,0 +1,12 @@
+[
+ {"id":"apple",      "fruits":["apple"],      "prompt":"two red apples resting on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"lemon",      "fruits":["lemon"],      "prompt":"two bright yellow lemons resting on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"banana",     "fruits":["banana"],     "prompt":"a single small bunch of bananas resting on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"pear",       "fruits":["pear"],       "prompt":"two green pears resting on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"plum",       "fruits":["plum"],       "prompt":"three dark purple plums resting on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"kiwi",       "fruits":["kiwi"],       "prompt":"two brown fuzzy kiwifruit resting on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"strawberry", "fruits":["strawberry"], "prompt":"a small pile of red strawberries resting on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"grape",      "fruits":["grape"],      "prompt":"a small bunch of purple grapes resting on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"pineapple",  "fruits":["pineapple"],  "prompt":"a single pineapple lying on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"peach",      "fruits":["peach"],      "prompt":"two pink peaches resting on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"}
+]

@@ -1,0 +1,9 @@
+[
+ {"id":"apple_banana",   "fruits":["apple","banana"],   "prompt":"a red apple and a small bunch of bananas resting side by side on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"lemon_kiwi",     "fruits":["lemon","kiwi"],     "prompt":"two bright yellow lemons and two brown fuzzy kiwifruit resting side by side on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"pear_plum",      "fruits":["pear","plum"],      "prompt":"a green pear and two dark purple plums resting side by side on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"grape_strawberry","fruits":["grape","strawberry"],"prompt":"a small bunch of purple grapes and a few red strawberries resting side by side on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"pineapple_peach","fruits":["pineapple","peach"], "prompt":"a pineapple and two pink peaches resting side by side on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"apple_pear_plum","fruits":["apple","pear","plum"],"prompt":"a red apple, a green pear, and a dark purple plum resting side by side on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"},
+ {"id":"banana_kiwi_grape","fruits":["banana","kiwi","grape"],"prompt":"a small bunch of bananas, two brown fuzzy kiwifruit, and a small bunch of purple grapes resting side by side on the empty wooden table in the foreground, near the front edge closest to the viewer, everything else unchanged"}
+]

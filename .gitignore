@@ -1,0 +1,14 @@
+.env
+out/
+out_*/
+renders/
+__pycache__/
+datasets/
+episodes/
+gr1_frames/
+synth_frames/
+logs/
+*.hdf5
+webapp/jobs/
+webapp/__pycache__/
+webapp/static/previews/

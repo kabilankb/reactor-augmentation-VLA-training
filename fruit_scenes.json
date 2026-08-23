@@ -1,0 +1,87 @@
+[
+  {
+    "id": "apple_lemon",
+    "fruits": [
+      "apple",
+      "lemon"
+    ],
+    "prompt": "a red apple and a yellow lemon on the wooden table at the back, a small wooden bowl of mixed fruit in the far corner, everything else unchanged"
+  },
+  {
+    "id": "tropical",
+    "fruits": [
+      "mango",
+      "papaya"
+    ],
+    "prompt": "a small ripe mango and a wedge of papaya in the far top-left corner of the wooden table, well away from the oranges, everything else unchanged"
+  },
+  {
+    "id": "berries",
+    "fruits": [
+      "strawberry",
+      "blueberry"
+    ],
+    "prompt": "a small bowl of strawberries and a small bowl of blueberries in the far top-left corner of the wooden table, well away from the oranges, everything else unchanged"
+  },
+  {
+    "id": "citrus",
+    "fruits": [
+      "lemon",
+      "lime",
+      "grapefruit"
+    ],
+    "prompt": "a wire basket of lemons, limes and a pink grapefruit on the wooden table at the back, everything else unchanged"
+  },
+  {
+    "id": "grapes_pear",
+    "fruits": [
+      "grapes",
+      "pear"
+    ],
+    "prompt": "a small bunch of purple grapes and a green pear in the far top-left corner of the wooden table, well away from the oranges, everything else unchanged"
+  },
+  {
+    "id": "banana_apple",
+    "fruits": [
+      "banana",
+      "apple"
+    ],
+    "prompt": "a bunch of yellow bananas and two red apples on the wooden table at the back, everything else unchanged"
+  },
+  {
+    "id": "melon",
+    "fruits": [
+      "watermelon",
+      "cantaloupe"
+    ],
+    "prompt": "two small wedges of watermelon on a saucer in the far top-right corner of the wooden table, well away from the oranges, everything else unchanged"
+  },
+  {
+    "id": "mixed_basket",
+    "fruits": [
+      "apple",
+      "banana",
+      "orange",
+      "grapes",
+      "pear"
+    ],
+    "prompt": "a large wicker basket of mixed fruit on the wooden table at the back, everything else unchanged"
+  },
+  {
+    "id": "pineapple_kiwi",
+    "fruits": [
+      "pineapple",
+      "kiwi"
+    ],
+    "prompt": "a whole pineapple and two kiwifruit on the wooden table at the back, everything else unchanged"
+  },
+  {
+    "id": "cherries_plums",
+    "fruits": [
+      "cherry",
+      "plum",
+      "raspberry"
+    ],
+    "prompt": "a bowl of dark cherries, purple plums and raspberries on the wooden table at the back left, everything else unchanged"
+  }
+]
