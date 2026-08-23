@@ -1,5 +1,7 @@
 # Reactor X2 → robot-policy data augmentation
 
+https://github.com/user-attachments/assets/a4d6d8b6-27c7-4a9a-8e50-55c0dd22a3aa
+
 Using Reactor's XMAX X2 video-editing model to augment robot demonstration data
 for VLA / diffusion-policy post-training.
 
