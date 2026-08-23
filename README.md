@@ -17,10 +17,13 @@ for VLA / diffusion-policy post-training.
 
 ## Datasets on Hugging Face
 
-Published at **[kabilanKB/reactor_x2_lerobot](https://huggingface.co/datasets/kabilanKB/reactor_x2_lerobot)**:
+Each dataset is its own repo, with `meta/`, `data/`, `videos/` at the repo
+root — the standard LeRobot layout, so `LeRobotDataset(repo_id=...)` and any
+LeRobot viewer/visualizer works without extra path config:
 
-- [`lerobot_fruit10x`](https://huggingface.co/datasets/kabilanKB/reactor_x2_lerobot/tree/main/lerobot_fruit10x) — 10 episodes, one distractor fruit per scene, 899 frames.
-- [`lerobot_fruit_env50`](https://huggingface.co/datasets/kabilanKB/reactor_x2_lerobot/tree/main/lerobot_fruit_env50) — 40 episodes (of 50 attempted), fruit + lighting-style combos, 3506 frames. 10 scenes dropped on the per-frame target-survival gate — see `meta/dropped.json` in that folder.
+- **[kabilanKB/reactor_x2_lerobot_fruit10x](https://huggingface.co/datasets/kabilanKB/reactor_x2_lerobot_fruit10x)** — 10 episodes, one distractor fruit per scene, 899 frames.
+- **[kabilanKB/reactor_x2_lerobot_env50](https://huggingface.co/datasets/kabilanKB/reactor_x2_lerobot_env50)** — 40 episodes (of 50 attempted), fruit + lighting-style combos, 3506 frames. 10 scenes dropped on the per-frame target-survival gate — see `meta/dropped.json` in that repo.
+- **[kabilanKB/reactor_x2_100](https://huggingface.co/datasets/kabilanKB/reactor_x2_100)** — 79 episodes (of 95 attempted), 9 distractor fruits x 5 lighting styles, 6818 frames. 16 scenes dropped on the per-frame target-survival gate — see `meta/dropped.json` in that repo.
 
 ## Quickstart
 

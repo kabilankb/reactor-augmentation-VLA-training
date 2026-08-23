@@ -34,6 +34,10 @@ LOGS: dict[str, Path] = {
         "/tmp/claude-1000/-home-zeux-reactor-augmentation/"
         "a1270aa0-700b-4e02-a89a-e3b67846db74/scratchpad/build_env50.log"
     ),
+    "fruit95 build": Path(
+        "/tmp/claude-1000/-home-zeux-reactor-augmentation/"
+        "a1270aa0-700b-4e02-a89a-e3b67846db74/scratchpad/build_95.log"
+    ),
 }
 # Also pick up anything dropped in the repo's own logs/ dir, so future runs
 # just need `> logs/whatever.log` to show up automatically.

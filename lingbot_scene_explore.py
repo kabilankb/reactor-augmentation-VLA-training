@@ -27,9 +27,6 @@ Usage:
     python lingbot_scene_explore.py --seed-frame episodes/orange_ep0/rgb/000000.png \
         --scenes fruit_scenes_multi.json --out out_lingbot_multi
 
-MODEL below is unverified against the live model catalog -- confirm the
-exact id (e.g. "lingbot/world-2" vs "lingbot-world-2") from the Reactor
-dashboard/docs before running; a wrong id fails fast on connect.
 """
 
 from __future__ import annotations
@@ -47,7 +44,7 @@ import numpy as np
 
 from reactor_sdk import Reactor
 
-MODEL = "lingbot/world-2"  # TODO: verify against https://docs.reactor.inc/model-api-reference/lingbot-world-2
+MODEL = "reactor/lingbot-world-2"
 OUTPUT_TRACK = "main_video"
 
 

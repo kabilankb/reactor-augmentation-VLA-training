@@ -194,7 +194,60 @@ def episodes():
     return out
 
 
+def _episode_dir(name: str) -> Path:
+    if "/" in name or "\\" in name or name in (".", ".."):
+        raise HTTPException(400, "bad episode name")
+    d = ROOT / "episodes" / name
+    if not (d / "manifest.jsonl").exists():
+        raise HTTPException(404, "no such source episode")
+    return d
+
+
+@app.get("/api/source/{name}/frame/{seq}")
+def source_frame(name: str, seq: int):
+    """One raw recorded frame -- the real footage, pre-augmentation."""
+    d = _episode_dir(name)
+    p = d / "rgb" / f"f{seq:06d}.png"
+    if not p.exists():
+        raise HTTPException(404, f"no frame {seq}")
+    return FileResponse(p, media_type="image/png")
+
+
+@app.get("/api/source/{name}/actions")
+def source_actions(name: str):
+    """Same {n, dim, series} shape as /api/actions, so the frontend plot() is shared."""
+    import numpy as np
+    d = _episode_dir(name)
+    rows = [json.loads(l) for l in (d / "manifest.jsonl").read_text().splitlines()]
+    a = np.stack([np.asarray(r["action"], float) for r in rows])
+    return {"n": int(a.shape[0]), "dim": int(a.shape[1]),
+            "series": [a[:, i].tolist() for i in range(a.shape[1])],
+            "task": rows[0].get("task") if rows else None,
+            "source_seq": [r["seq"] for r in rows]}
+
+
 # ---------------------------------------------------------------- augmenting
+
+SCENES_GLOB = "fruit_scenes*.json"
+
+
+@app.get("/api/scene_files")
+def scene_files():
+    return sorted(p.name for p in ROOT.glob(SCENES_GLOB))
+
+
+@app.get("/api/scenes/{filename}")
+def scene_file(filename: str):
+    # Only ever read fruit_scenes*.json directly under ROOT -- no path
+    # components allowed, so this can't be turned into an arbitrary file read.
+    if "/" in filename or "\\" in filename or not filename.startswith("fruit_scenes") \
+            or not filename.endswith(".json"):
+        raise HTTPException(400, "not a scenes file")
+    p = ROOT / filename
+    if not p.exists():
+        raise HTTPException(404, "no such scenes file")
+    return json.loads(p.read_text())
+
 
 class AugmentIn(BaseModel):
     episode: str
@@ -203,21 +256,72 @@ class AugmentIn(BaseModel):
     count: int = 96
     batch: int = 96
     coverage_floor: float = 0.75
+    target_de_ceiling: float = 30.0
 
 
 @app.post("/api/augment")
 def augment(body: AugmentIn):
+    """Add-distractor-fruit build, gated on the ORANGE surviving per frame.
+
+    Shells out to build_fruit_addition_dataset.py -- the script this whole
+    project actually validated (coverage floor + per-frame, per-orange target
+    dE gate with truncation), not the older coverage-only build_fruit_datasets.py.
+    """
     if not read_env().get("REACTOR_API_KEY"):
         raise HTTPException(400, "set the Reactor API key first")
     spec = JOBS_DIR / f"scenes_{uuid.uuid4().hex[:8]}.json"
     spec.write_text(json.dumps(body.scenes, indent=2))
-    cmd = [sys.executable, str(ROOT / "build_fruit_datasets.py"),
+    cmd = [sys.executable, str(ROOT / "build_fruit_addition_dataset.py"),
            "--episode", str(ROOT / "episodes" / body.episode),
            "--scenes", str(spec), "--count", str(body.count), "--batch", str(body.batch),
            "--coverage-floor", str(body.coverage_floor),
+           "--target-de-ceiling", str(body.target_de_ceiling),
            "--out", str(ROOT / "datasets" / body.out_name),
            "--preview", str(ROOT / "webapp" / "static" / "previews" / body.out_name)]
     return {"job": start_job(f"augment -> {body.out_name}", cmd, ROOT)}
+
+
+# ------------------------------------------------------------- hub publishing
+
+class HfPushIn(BaseModel):
+    dataset: str
+    repo_id: str
+    private: bool = False
+
+
+@app.post("/api/hf/push")
+def hf_push(body: HfPushIn):
+    ds_dir = ROOT / "datasets" / body.dataset
+    if not (ds_dir / "meta" / "info.json").exists():
+        raise HTTPException(404, f"no dataset at {ds_dir}")
+    if "/" not in body.repo_id:
+        raise HTTPException(400, "repo_id must be namespace/name")
+    cmd = [sys.executable, str(ROOT / "webapp" / "push_hf.py"),
+           "--dataset", str(ds_dir), "--repo-id", body.repo_id]
+    if body.private:
+        cmd.append("--private")
+    return {"job": start_job(f"push {body.dataset} -> {body.repo_id}", cmd, ROOT)}
+
+
+# ----------------------------------------------------------------- model info
+
+MODELS = [
+    {"id": "xmax/x2", "name": "X2", "category": "Streaming Video Editing",
+     "used_for": "Editing real recorded episode frames in place (add distractor "
+                 "fruit, restyle lighting). Preserves the source arm motion, so "
+                 "output frames can carry the original action/state labels."},
+    {"id": "reactor/lingbot-world-2", "name": "LingBot World 2",
+     "category": "Action Controlled World Generation",
+     "used_for": "Generating a new navigable world from a seed image + prompt, "
+                 "driven by camera movement it controls. No video input, so it "
+                 "cannot preserve an existing episode's motion -- not used for "
+                 "building this project's paired LeRobot datasets."},
+]
+
+
+@app.get("/api/models")
+def models():
+    return MODELS
 
 
 # --------------------------------------------------------------- visualising

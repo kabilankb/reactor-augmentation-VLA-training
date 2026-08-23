@@ -1,0 +1,822 @@
+[
+ {
+  "id": "apple_gold",
+  "fruits": [
+   "apple"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a red apple resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_gold",
+  "fruits": [
+   "lemon"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, two bright yellow lemons resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_gold",
+  "fruits": [
+   "banana"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a small bunch of bananas resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_gold",
+  "fruits": [
+   "pear"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, two green pears resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "plum_gold",
+  "fruits": [
+   "plum"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, three dark purple plums resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_gold",
+  "fruits": [
+   "kiwi"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, two brown fuzzy kiwifruit resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_gold",
+  "fruits": [
+   "strawberry"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a small pile of red strawberries resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_gold",
+  "fruits": [
+   "grape"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a small bunch of purple grapes resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "peach_gold",
+  "fruits": [
+   "peach"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, two pink peaches resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_banana_gold",
+  "fruits": [
+   "apple",
+   "banana"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a red apple and a small bunch of bananas resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_kiwi_gold",
+  "fruits": [
+   "lemon",
+   "kiwi"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, two bright yellow lemons and two brown fuzzy kiwifruit resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_plum_gold",
+  "fruits": [
+   "pear",
+   "plum"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a green pear and two dark purple plums resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_strawberry_gold",
+  "fruits": [
+   "grape",
+   "strawberry"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a small bunch of purple grapes and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_peach_gold",
+  "fruits": [
+   "strawberry",
+   "peach"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a few red strawberries and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_pear_plum_gold",
+  "fruits": [
+   "apple",
+   "pear",
+   "plum"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a red apple, a green pear, and a dark purple plum resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_kiwi_grape_gold",
+  "fruits": [
+   "banana",
+   "kiwi",
+   "grape"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a small bunch of bananas, two brown fuzzy kiwifruit, and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_peach_gold",
+  "fruits": [
+   "lemon",
+   "peach"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, two bright yellow lemons and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_grape_gold",
+  "fruits": [
+   "apple",
+   "grape"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, a red apple and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_strawberry_gold",
+  "fruits": [
+   "kiwi",
+   "strawberry"
+  ],
+  "style": "gold",
+  "prompt": "warm golden late-afternoon sunlight, two brown fuzzy kiwifruit and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_overcast",
+  "fruits": [
+   "apple"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a red apple resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_overcast",
+  "fruits": [
+   "lemon"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, two bright yellow lemons resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_overcast",
+  "fruits": [
+   "banana"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a small bunch of bananas resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_overcast",
+  "fruits": [
+   "pear"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, two green pears resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "plum_overcast",
+  "fruits": [
+   "plum"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, three dark purple plums resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_overcast",
+  "fruits": [
+   "kiwi"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, two brown fuzzy kiwifruit resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_overcast",
+  "fruits": [
+   "strawberry"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a small pile of red strawberries resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_overcast",
+  "fruits": [
+   "grape"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a small bunch of purple grapes resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "peach_overcast",
+  "fruits": [
+   "peach"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, two pink peaches resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_banana_overcast",
+  "fruits": [
+   "apple",
+   "banana"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a red apple and a small bunch of bananas resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_kiwi_overcast",
+  "fruits": [
+   "lemon",
+   "kiwi"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, two bright yellow lemons and two brown fuzzy kiwifruit resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_plum_overcast",
+  "fruits": [
+   "pear",
+   "plum"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a green pear and two dark purple plums resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_strawberry_overcast",
+  "fruits": [
+   "grape",
+   "strawberry"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a small bunch of purple grapes and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_peach_overcast",
+  "fruits": [
+   "strawberry",
+   "peach"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a few red strawberries and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_pear_plum_overcast",
+  "fruits": [
+   "apple",
+   "pear",
+   "plum"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a red apple, a green pear, and a dark purple plum resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_kiwi_grape_overcast",
+  "fruits": [
+   "banana",
+   "kiwi",
+   "grape"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a small bunch of bananas, two brown fuzzy kiwifruit, and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_peach_overcast",
+  "fruits": [
+   "lemon",
+   "peach"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, two bright yellow lemons and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_grape_overcast",
+  "fruits": [
+   "apple",
+   "grape"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, a red apple and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_strawberry_overcast",
+  "fruits": [
+   "kiwi",
+   "strawberry"
+  ],
+  "style": "overcast",
+  "prompt": "soft overcast diffuse daylight, gentle shadows, two brown fuzzy kiwifruit and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_morning",
+  "fruits": [
+   "apple"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a red apple resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_morning",
+  "fruits": [
+   "lemon"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, two bright yellow lemons resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_morning",
+  "fruits": [
+   "banana"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a small bunch of bananas resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_morning",
+  "fruits": [
+   "pear"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, two green pears resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "plum_morning",
+  "fruits": [
+   "plum"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, three dark purple plums resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_morning",
+  "fruits": [
+   "kiwi"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, two brown fuzzy kiwifruit resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_morning",
+  "fruits": [
+   "strawberry"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a small pile of red strawberries resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_morning",
+  "fruits": [
+   "grape"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a small bunch of purple grapes resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "peach_morning",
+  "fruits": [
+   "peach"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, two pink peaches resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_banana_morning",
+  "fruits": [
+   "apple",
+   "banana"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a red apple and a small bunch of bananas resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_kiwi_morning",
+  "fruits": [
+   "lemon",
+   "kiwi"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, two bright yellow lemons and two brown fuzzy kiwifruit resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_plum_morning",
+  "fruits": [
+   "pear",
+   "plum"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a green pear and two dark purple plums resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_strawberry_morning",
+  "fruits": [
+   "grape",
+   "strawberry"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a small bunch of purple grapes and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_peach_morning",
+  "fruits": [
+   "strawberry",
+   "peach"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a few red strawberries and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_pear_plum_morning",
+  "fruits": [
+   "apple",
+   "pear",
+   "plum"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a red apple, a green pear, and a dark purple plum resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_kiwi_grape_morning",
+  "fruits": [
+   "banana",
+   "kiwi",
+   "grape"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a small bunch of bananas, two brown fuzzy kiwifruit, and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_peach_morning",
+  "fruits": [
+   "lemon",
+   "peach"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, two bright yellow lemons and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_grape_morning",
+  "fruits": [
+   "apple",
+   "grape"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, a red apple and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_strawberry_morning",
+  "fruits": [
+   "kiwi",
+   "strawberry"
+  ],
+  "style": "morning",
+  "prompt": "cool blue early-morning light, two brown fuzzy kiwifruit and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_lamp",
+  "fruits": [
+   "apple"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a red apple resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_lamp",
+  "fruits": [
+   "lemon"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, two bright yellow lemons resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_lamp",
+  "fruits": [
+   "banana"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a small bunch of bananas resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_lamp",
+  "fruits": [
+   "pear"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, two green pears resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "plum_lamp",
+  "fruits": [
+   "plum"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, three dark purple plums resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_lamp",
+  "fruits": [
+   "kiwi"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, two brown fuzzy kiwifruit resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_lamp",
+  "fruits": [
+   "strawberry"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a small pile of red strawberries resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_lamp",
+  "fruits": [
+   "grape"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a small bunch of purple grapes resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "peach_lamp",
+  "fruits": [
+   "peach"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, two pink peaches resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_banana_lamp",
+  "fruits": [
+   "apple",
+   "banana"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a red apple and a small bunch of bananas resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_kiwi_lamp",
+  "fruits": [
+   "lemon",
+   "kiwi"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, two bright yellow lemons and two brown fuzzy kiwifruit resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_plum_lamp",
+  "fruits": [
+   "pear",
+   "plum"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a green pear and two dark purple plums resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_strawberry_lamp",
+  "fruits": [
+   "grape",
+   "strawberry"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a small bunch of purple grapes and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_peach_lamp",
+  "fruits": [
+   "strawberry",
+   "peach"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a few red strawberries and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_pear_plum_lamp",
+  "fruits": [
+   "apple",
+   "pear",
+   "plum"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a red apple, a green pear, and a dark purple plum resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_kiwi_grape_lamp",
+  "fruits": [
+   "banana",
+   "kiwi",
+   "grape"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a small bunch of bananas, two brown fuzzy kiwifruit, and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_peach_lamp",
+  "fruits": [
+   "lemon",
+   "peach"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, two bright yellow lemons and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_grape_lamp",
+  "fruits": [
+   "apple",
+   "grape"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, a red apple and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_strawberry_lamp",
+  "fruits": [
+   "kiwi",
+   "strawberry"
+  ],
+  "style": "lamp",
+  "prompt": "warm indoor lamp light, soft warm shadows, two brown fuzzy kiwifruit and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_midday",
+  "fruits": [
+   "apple"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a red apple resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_midday",
+  "fruits": [
+   "lemon"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, two bright yellow lemons resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_midday",
+  "fruits": [
+   "banana"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a small bunch of bananas resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_midday",
+  "fruits": [
+   "pear"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, two green pears resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "plum_midday",
+  "fruits": [
+   "plum"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, three dark purple plums resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_midday",
+  "fruits": [
+   "kiwi"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, two brown fuzzy kiwifruit resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_midday",
+  "fruits": [
+   "strawberry"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a small pile of red strawberries resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_midday",
+  "fruits": [
+   "grape"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a small bunch of purple grapes resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "peach_midday",
+  "fruits": [
+   "peach"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, two pink peaches resting on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_banana_midday",
+  "fruits": [
+   "apple",
+   "banana"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a red apple and a small bunch of bananas resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_kiwi_midday",
+  "fruits": [
+   "lemon",
+   "kiwi"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, two bright yellow lemons and two brown fuzzy kiwifruit resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "pear_plum_midday",
+  "fruits": [
+   "pear",
+   "plum"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a green pear and two dark purple plums resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "grape_strawberry_midday",
+  "fruits": [
+   "grape",
+   "strawberry"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a small bunch of purple grapes and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "strawberry_peach_midday",
+  "fruits": [
+   "strawberry",
+   "peach"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a few red strawberries and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_pear_plum_midday",
+  "fruits": [
+   "apple",
+   "pear",
+   "plum"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a red apple, a green pear, and a dark purple plum resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "banana_kiwi_grape_midday",
+  "fruits": [
+   "banana",
+   "kiwi",
+   "grape"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a small bunch of bananas, two brown fuzzy kiwifruit, and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "lemon_peach_midday",
+  "fruits": [
+   "lemon",
+   "peach"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, two bright yellow lemons and two pink peaches resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "apple_grape_midday",
+  "fruits": [
+   "apple",
+   "grape"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, a red apple and a small bunch of purple grapes resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ },
+ {
+  "id": "kiwi_strawberry_midday",
+  "fruits": [
+   "kiwi",
+   "strawberry"
+  ],
+  "style": "midday",
+  "prompt": "bright neutral midday daylight, two brown fuzzy kiwifruit and a few red strawberries resting side by side on the wooden table in the foreground, near the front edge closest to the viewer"
+ }
+]

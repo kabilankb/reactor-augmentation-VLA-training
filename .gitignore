@@ -12,3 +12,7 @@ logs/
 webapp/jobs/
 webapp/__pycache__/
 webapp/static/previews/
+training_runs/
+*.safetensors
+*.pt
+*.ckpt

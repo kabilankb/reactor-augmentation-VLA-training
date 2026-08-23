@@ -98,6 +98,11 @@ canvas{width:100%;height:150px;display:block;background:#0b0d12;border-radius:6p
     <h2>Environment</h2>
     <div id="envinfo" class="mono dim">loading…</div>
   </div>
+  <div class="card">
+    <h2>Models on this account</h2>
+    <p class="hint">Reactor's own categories — not interchangeable. Augment below only ever calls X2.</p>
+    <div id="modelsinfo" class="mono dim" style="font-size:12.5px"></div>
+  </div>
 </section>
 
 <!-- ──────────────────────────── DATASETS ─────────────────────────── -->
@@ -139,7 +144,9 @@ canvas{width:100%;height:150px;display:block;background:#0b0d12;border-radius:6p
       <tbody id="scenes"></tbody></table>
     <div class="row" style="margin-top:12px">
       <button class="ghost" onclick="addScene()">+ Scene</button>
-      <button class="ghost" onclick="loadPreset()">Load 10-fruit preset</button>
+      <div style="width:240px"><label>Load from file</label><select id="scenefile"></select></div>
+      <button class="ghost" onclick="loadSceneFile()">Load</button>
+      <button class="ghost" onclick="loadPreset()">Load built-in preset</button>
     </div>
   </div>
   <div class="card">
@@ -150,21 +157,34 @@ canvas{width:100%;height:150px;display:block;background:#0b0d12;border-radius:6p
       <div style="width:110px"><label>Frames</label><input id="count" type="number" value="96"></div>
       <div style="width:110px"><label>Batch</label><input id="batch" type="number" value="96"></div>
       <div style="width:130px"><label>Coverage floor</label><input id="floor" type="number" step="0.05" value="0.75"></div>
+      <div style="width:150px"><label>Target dE ceiling</label><input id="deceil" type="number" step="1" value="30"></div>
       <button class="act" onclick="runAugment()">Generate</button>
     </div>
+    <p class="hint" style="margin-top:10px">Runs <span class="mono">build_fruit_addition_dataset.py</span> —
+      gates on the orange surviving <i>per frame</i>, truncates the tail if it doesn't, drops the scene
+      if too little survives. Orange stays the grasped target in every episode.</p>
   </div>
 </section>
 
 <!-- ─────────────────────────── VISUALIZE ─────────────────────────── -->
 <section class="tab" id="tab-viz">
   <div class="card">
-    <div class="row">
+    <div class="row" style="margin-bottom:12px">
+      <button class="ghost" id="vizmode-reactor" onclick="setVizMode('reactor')">Reactor datasets</button>
+      <button class="ghost" id="vizmode-source" onclick="setVizMode('source')">Source episodes</button>
+      <span class="sp" style="flex:1"></span>
+      <button class="ghost" onclick="refreshDatasets();refreshSourceEpisodes()">Refresh</button>
+    </div>
+    <div class="row" id="viz-reactor-controls">
       <div style="flex:1;min-width:220px"><label>Dataset</label><select id="vizds" onchange="loadDataset()"></select></div>
       <div style="flex:1;min-width:220px"><label>Episode</label><select id="vizep" onchange="loadEpisode()"></select></div>
-      <button class="ghost" onclick="refreshDatasets()">Refresh</button>
+    </div>
+    <div class="row" id="viz-source-controls" style="display:none">
+      <div style="flex:1;min-width:220px"><label>Source episode (real recording, pre-augmentation)</label>
+        <select id="vizsrc" onchange="loadSourceEpisode()"></select></div>
     </div>
   </div>
-  <div class="grid2">
+  <div class="grid2" id="viz-reactor-panels">
     <div class="card">
       <h2>Augmented output</h2>
       <video id="player" controls loop></video>
@@ -177,6 +197,34 @@ canvas{width:100%;height:150px;display:block;background:#0b0d12;border-radius:6p
       <h2 style="margin-top:16px">Action trace</h2>
       <canvas id="plot" width="900" height="150"></canvas>
       <p class="dim" style="font-size:12px;margin:8px 0 0">One line per action dimension, over the kept frames.</p>
+    </div>
+  </div>
+  <div class="grid2" id="viz-source-panels" style="display:none">
+    <div class="card">
+      <h2>Raw recorded frames</h2>
+      <img id="srcframe" style="width:100%;border-radius:6px;background:#000;display:block">
+      <div class="row" style="margin-top:10px;align-items:center">
+        <button class="ghost" id="srcplay" onclick="toggleSourcePlay()">▶ play</button>
+        <input id="srcseek" type="range" min="0" max="0" value="0" style="flex:1" oninput="seekSource(+this.value)">
+        <span class="mono dim" id="srcseeklabel" style="width:90px;text-align:right">0 / 0</span>
+      </div>
+      <div id="srcmeta" class="mono dim" style="margin-top:12px;font-size:12px"></div>
+    </div>
+    <div class="card">
+      <h2>Action trace</h2>
+      <canvas id="srcplot" width="900" height="150"></canvas>
+      <p class="dim" style="font-size:12px;margin:8px 0 0">One line per action dimension, over the whole recording. The real demonstration this project's datasets are all built from.</p>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Push to Hugging Face</h2>
+    <p class="hint">Publishes the whole selected dataset at the repo <b>root</b> (not a subfolder) — the
+      layout LeRobot tooling and the Hub's own dataset viewer expect. Uses your locally cached HF login.</p>
+    <div class="row">
+      <div style="flex:1;min-width:280px"><label>Repo id</label><input id="hfrepo" placeholder="namespace/dataset-name"></div>
+      <label style="display:flex;align-items:center;gap:6px;margin:0 0 8px;font-size:12.5px">
+        <input type="checkbox" id="hfprivate" style="width:auto"> private</label>
+      <button class="act" onclick="pushHf()">Push</button>
     </div>
   </div>
 </section>
@@ -256,7 +304,7 @@ document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
   document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
   b.classList.add('active'); $('#tab-'+b.dataset.tab).classList.add('active');
-  if (b.dataset.tab==='viz') refreshDatasets();
+  if (b.dataset.tab==='viz') { refreshDatasets(); if(SRC) refreshSourceEpisodes(); }
   if (b.dataset.tab==='augment') refreshEpisodes();
 });
 
@@ -273,6 +321,12 @@ async function refreshConfig(){
     + `leisaac root: ${t.root} ${t.available?'<span class="ok">found</span>':'<span class="bad">missing</span>'}<br>`
     + `leisaac python: ${t.python}<br>tasks: ${t.tasks.length}`;
   $('#ltask').innerHTML = t.tasks.map(x=>`<option>${x}</option>`).join('');
+}
+async function refreshModels(){
+  const m = await api('/api/models');
+  $('#modelsinfo').innerHTML = m.map(x =>
+    `<b style="color:var(--text)">${x.name}</b> <span class="dim">(${x.id})</span> — ${x.category}<br>`
+    + `<span class="dim">${x.used_for}</span>`).join('<br><br>');
 }
 async function saveKey(){
   try{ await api('/api/config',{method:'POST',headers:{'content-type':'application/json'},
@@ -343,6 +397,20 @@ function sceneRow(id='',fruits='',prompt=''){
 }
 function addScene(){ $('#scenes').appendChild(sceneRow()); }
 function loadPreset(){ $('#scenes').innerHTML=''; PRESET.forEach(p=>$('#scenes').appendChild(sceneRow(...p))); }
+async function refreshSceneFiles(){
+  const files = await api('/api/scene_files');
+  $('#scenefile').innerHTML = files.map(f=>`<option>${f}</option>`).join('')
+    || '<option disabled>none found</option>';
+}
+async function loadSceneFile(){
+  const f = $('#scenefile').value; if(!f) return;
+  try{
+    const scenes = await api('/api/scenes/'+encodeURIComponent(f));
+    $('#scenes').innerHTML = '';
+    scenes.forEach(s => $('#scenes').appendChild(
+      sceneRow(s.id, (s.fruits||[]).join(', '), s.prompt)));
+  }catch(e){ alert(e.message); }
+}
 function collectScenes(){
   return [...document.querySelectorAll('#scenes tr')].map(tr=>({
     id: tr.querySelector('.s-id').value.trim(),
@@ -355,7 +423,8 @@ async function runAugment(){
   if(!scenes.length) return alert('add at least one scene with an id and a prompt');
   try{ const r = await api('/api/augment',{method:'POST',headers:{'content-type':'application/json'},
       body:JSON.stringify({episode:$('#src').value,scenes,out_name:$('#outname').value,
-        count:+$('#count').value,batch:+$('#batch').value,coverage_floor:+$('#floor').value})});
+        count:+$('#count').value,batch:+$('#batch').value,coverage_floor:+$('#floor').value,
+        target_de_ceiling:+$('#deceil').value})});
     gotoJob(r.job);
   }catch(e){ alert(e.message); }
 }
@@ -385,12 +454,14 @@ async function loadEpisode(){
   const img = $('#preview');
   if(a){
     const cov = a.coverage, cls = cov>=0.8?'ok':(cov>=0.6?'warn':'bad');
+    const de = a.target_dE_median, deCls = de==null?'':(de<=25?'ok':(de<=30?'warn':'bad'));
     $('#vizmeta').innerHTML =
-      `<span class="pill">${a.scene_id}</span><span class="pill">${a.frames_kept} frames</span>`
-      + `<span class="pill ${cls}">coverage ${cov}</span><span class="pill">drift ${a.drift_px??'—'}px</span><br><br>`
-      + `<b>prompt</b><br>${a.prompt}<br><br>`
-      + `<b>source</b> ${a.source_dataset} · ${a.source_episode} · frames ${a.source_frames?.join('–')}<br>`
-      + `<b>target</b> ${a.target_object} · augmenter ${a.augmenter}`;
+      `<span class="pill">${a.scene_id}</span><span class="pill">${a.frames_kept} frames${a.truncated?' (truncated)':''}</span>`
+      + `<span class="pill ${cls}">coverage ${cov}</span>`
+      + (de!=null ? `<span class="pill ${deCls}">target dE ${de} / ${a.target_dE_p90}</span>` : '')
+      + `<br><br><b>prompt</b><br>${a.prompt}<br><br>`
+      + `<b>source</b> ${a.source_dataset||''} · ${a.source_episode||''} · frames ${a.source_frames?.join('–')||''}<br>`
+      + `<b>target</b> ${a.target_object||'orange'} · augmenter ${a.augmenter||''}`;
     img.src = `/static/previews/${VIZ.name}/${a.scene_id}.png`;
     img.style.display='block'; $('#nopreview').style.display='none';
     img.onerror = ()=>{ img.style.display='none'; $('#nopreview').style.display='block'; };
@@ -398,10 +469,77 @@ async function loadEpisode(){
     $('#vizmeta').textContent = 'no augmentation metadata for this episode';
     img.style.display='none'; $('#nopreview').style.display='block';
   }
-  try{ plot(await api(`/api/actions/${VIZ.name}/${ep}`)); }catch(e){}
+  try{ plot(await api(`/api/actions/${VIZ.name}/${ep}`), '#plot'); }catch(e){}
 }
-function plot(d){
-  const c = $('#plot'), ctx = c.getContext('2d');
+// ── visualize: source episodes (real recorded frames, pre-augmentation)
+let SRC = null, SRC_SEQ = 0, SRC_TIMER = null;
+function setVizMode(mode){
+  const reactor = mode==='reactor';
+  const on = 'background:var(--accent);color:#08101f;border-color:var(--accent);font-weight:600';
+  $('#vizmode-reactor').style.cssText = reactor ? on : '';
+  $('#vizmode-source').style.cssText = reactor ? '' : on;
+  $('#viz-reactor-controls').style.display = reactor?'flex':'none';
+  $('#viz-source-controls').style.display = reactor?'none':'flex';
+  $('#viz-reactor-panels').style.display = reactor?'grid':'none';
+  $('#viz-source-panels').style.display = reactor?'none':'grid';
+  if(!reactor){ stopSourcePlay(); refreshSourceEpisodes(); }
+}
+async function refreshSourceEpisodes(){
+  const e = await api('/api/episodes');
+  $('#vizsrc').innerHTML = e.map(x=>`<option value="${x.name}">${x.name} — ${x.frames} frames</option>`).join('')
+    || '<option disabled>none fetched yet</option>';
+  if(e.length) loadSourceEpisode();
+}
+async function loadSourceEpisode(){
+  stopSourcePlay();
+  const name = $('#vizsrc').value; if(!name) return;
+  SRC = await api(`/api/source/${name}/actions`); SRC.name = name;
+  SRC_SEQ = 0;
+  $('#srcseek').max = SRC.n - 1; $('#srcseek').value = 0;
+  $('#srcmeta').innerHTML = `<b>task</b> ${SRC.task||'—'}<br><b>frames</b> ${SRC.n} · <b>action dim</b> ${SRC.dim}`;
+  plot(SRC, '#srcplot');
+  showSourceFrame(0);
+}
+function showSourceFrame(i){
+  if(!SRC) return;
+  SRC_SEQ = Math.max(0, Math.min(SRC.n - 1, i));
+  $('#srcframe').src = `/api/source/${SRC.name}/frame/${SRC.source_seq[SRC_SEQ]}`;
+  $('#srcseek').value = SRC_SEQ;
+  $('#srcseeklabel').textContent = `${SRC_SEQ} / ${SRC.n - 1}`;
+  drawPlot('#srcplot', SRC_SEQ/(SRC.n-1));
+}
+function seekSource(i){ stopSourcePlay(); showSourceFrame(i); }
+function toggleSourcePlay(){ SRC_TIMER ? stopSourcePlay() : startSourcePlay(); }
+function startSourcePlay(){
+  if(!SRC || SRC_TIMER) return;
+  $('#srcplay').textContent = '⏸ pause';
+  SRC_TIMER = setInterval(()=>{
+    if(SRC_SEQ >= SRC.n - 1){ stopSourcePlay(); return; }
+    showSourceFrame(SRC_SEQ + 1);
+  }, 1000/24);
+}
+function stopSourcePlay(){
+  if(SRC_TIMER){ clearInterval(SRC_TIMER); SRC_TIMER = null; }
+  $('#srcplay').textContent = '▶ play';
+}
+
+async function pushHf(){
+  if(!VIZ) return alert('pick a dataset first');
+  const repo = $('#hfrepo').value.trim();
+  if(!repo.includes('/')) return alert('repo id must be namespace/dataset-name');
+  try{ const r = await api('/api/hf/push',{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({dataset:VIZ.name, repo_id:repo, private:$('#hfprivate').checked})});
+    gotoJob(r.job);
+  }catch(e){ alert(e.message); }
+}
+const PLOTS = {}; // sel -> last-plotted data, so the cursor can redraw without a refetch
+function plot(d, sel){
+  PLOTS[sel] = d;
+  drawPlot(sel);
+}
+function drawPlot(sel, frac){
+  const d = PLOTS[sel]; if(!d) return;
+  const c = $(sel), ctx = c.getContext('2d');
   const W = c.width, H = c.height;
   ctx.clearRect(0,0,W,H);
   const all = d.series.flat(); const lo = Math.min(...all), hi = Math.max(...all);
@@ -412,6 +550,11 @@ function plot(d){
     s.forEach((v,j)=>{ const x = (j/(d.n-1))*W; j?ctx.lineTo(x,y(v)):ctx.moveTo(x,y(v)); });
     ctx.stroke();
   });
+  if(frac!=null && isFinite(frac)){
+    const x = Math.max(0,Math.min(W,frac*W));
+    ctx.strokeStyle = '#e6edf3'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke();
+  }
 }
 
 // ── leisaac
@@ -450,8 +593,14 @@ async function showLog(id, keep){
 }
 async function stopJob(id){ await api('/api/jobs/'+id+'/stop',{method:'POST'}); refreshJobs(); }
 
+$('#player').addEventListener('timeupdate', () => {
+  const p = $('#player');
+  if(p.duration) drawPlot('#plot', p.currentTime/p.duration);
+});
+
 // ── boot
-refreshConfig(); refreshGpu(); refreshSamples(); refreshEpisodes(); loadPreset();
+refreshConfig(); refreshModels(); refreshGpu(); refreshSamples(); refreshEpisodes();
+refreshSceneFiles(); loadPreset(); setVizMode('reactor');
 setInterval(refreshJobs, 2000);
 setInterval(refreshGpu, 10000);
 </script>
