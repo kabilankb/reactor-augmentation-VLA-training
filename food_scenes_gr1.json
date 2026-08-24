@@ -1,0 +1,37 @@
+[
+ {"id":"poha",                 "foods":["poha"],                     "prompt":"a bowl of poha on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"oatmeal",              "foods":["oatmeal"],                  "prompt":"a bowl of oatmeal on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"rice",                 "foods":["rice"],                     "prompt":"a mound of steamed rice on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"khichdi",              "foods":["khichdi"],                  "prompt":"a bowl of khichdi on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"upma",                 "foods":["upma"],                     "prompt":"a plate of upma on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+
+ {"id":"baked-potatoes",       "foods":["baked potatoes"],           "prompt":"two baked potatoes on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"sweet-potatoes",       "foods":["sweet potatoes"],           "prompt":"roasted sweet potatoes on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"steamed-broccoli",     "foods":["steamed broccoli"],         "prompt":"steamed broccoli florets on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"steamed-carrots",      "foods":["steamed carrots"],          "prompt":"steamed carrot slices on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"steamed-cauliflower",  "foods":["steamed cauliflower"],      "prompt":"steamed cauliflower florets on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"corn-on-the-cob",      "foods":["corn on the cob"],          "prompt":"a corn on the cob on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"frozen-peas",          "foods":["frozen peas"],              "prompt":"a small heap of green peas on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"frozen-mixed-vegetables","foods":["frozen mixed vegetables"],"prompt":"a mix of frozen mixed vegetables on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"papad",                "foods":["papad"],                    "prompt":"a papad on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+
+ {"id":"macaroni-and-cheese",  "foods":["macaroni and cheese"],      "prompt":"a serving of macaroni and cheese on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"omelette",             "foods":["omelette"],                 "prompt":"a folded omelette on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"scrambled-eggs",       "foods":["scrambled eggs"],           "prompt":"scrambled eggs on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"poached-eggs",         "foods":["poached eggs"],             "prompt":"two poached eggs on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"cheese-quesadilla",    "foods":["cheese quesadilla"],        "prompt":"a cheese quesadilla on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"dhokla",               "foods":["dhokla"],                   "prompt":"pieces of dhokla on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"ready-to-eat-curry",   "foods":["ready-to-eat curry"],       "prompt":"a ready-to-eat curry on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"instant-noodles",      "foods":["instant noodles"],          "prompt":"a serving of instant noodles on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"cup-pasta",            "foods":["cup pasta"],                "prompt":"a cup of pasta emptied onto the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"instant-soup",         "foods":["instant soup"],             "prompt":"a bowl of instant soup on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"microwave-popcorn",    "foods":["microwave popcorn"],        "prompt":"a small pile of popcorn on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"veggie-nuggets",       "foods":["veggie nuggets"],           "prompt":"veggie nuggets on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"french-fries",         "foods":["french fries"],             "prompt":"a portion of french fries on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"samosas",              "foods":["samosas"],                  "prompt":"two samosas on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"spring-rolls",         "foods":["spring rolls"],             "prompt":"spring rolls on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+
+ {"id":"mug-cake",             "foods":["mug cake"],                 "prompt":"a mug cake on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"brownies",             "foods":["brownies"],                 "prompt":"a couple of brownies on the white plate inside the microwave, warm interior glow, everything else unchanged"},
+ {"id":"carrot-halwa",         "foods":["carrot halwa"],             "prompt":"a serving of carrot halwa on the white plate inside the microwave, warm interior glow, everything else unchanged"}
+]

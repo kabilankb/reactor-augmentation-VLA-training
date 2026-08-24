@@ -26,6 +26,7 @@ LeRobot viewer/visualizer works without extra path config:
 - **[kabilanKB/reactor_x2_lerobot_fruit10x](https://huggingface.co/datasets/kabilanKB/reactor_x2_lerobot_fruit10x)** — 10 episodes, one distractor fruit per scene, 899 frames.
 - **[kabilanKB/reactor_x2_lerobot_env50](https://huggingface.co/datasets/kabilanKB/reactor_x2_lerobot_env50)** — 40 episodes (of 50 attempted), fruit + lighting-style combos, 3506 frames. 10 scenes dropped on the per-frame target-survival gate — see `meta/dropped.json` in that repo.
 - **[kabilanKB/reactor_x2_100](https://huggingface.co/datasets/kabilanKB/reactor_x2_100)** — 79 episodes (of 95 attempted), 9 distractor fruits x 5 lighting styles, 6818 frames. 16 scenes dropped on the per-frame target-survival gate — see `meta/dropped.json` in that repo.
+- **[kabilanKB/reactor-x2-GR1-Manipulation-Task-v3](https://huggingface.co/datasets/kabilanKB/reactor-x2-GR1-Manipulation-Task-v3)** — 31 episodes (of 32 food items attempted), 2656 frames, built from [nvidia/Arena-GR1-Manipulation-Task-v3](https://huggingface.co/datasets/nvidia/Arena-GR1-Manipulation-Task-v3) (GR1 humanoid, "reach out to the microwave and open it") with one food item added to the plate/turntable per episode. 1 scene (`dhokla`) dropped on the coverage gate — see `meta/augmentations.jsonl` in that repo.
 
 ## Quickstart
 
